@@ -19,7 +19,6 @@ idf_component_register(
         freertos
         driver
         log
-        cJSON
         lvgl
         esp_ldo_regulator
         esp_lcd_mipi_dsi
