@@ -19,4 +19,6 @@ idf_component_register(
         driver
         log
         lvgl
+        esp-tls
+        esp_lcd
 )
