@@ -9,7 +9,6 @@ idf_component_register(
         "status_screens.c"
     INCLUDE_DIRS
         "."
-        "../components/radar_ui"
     REQUIRES
         nvs_flash
         esp_wifi
