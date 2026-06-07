@@ -20,5 +20,4 @@ idf_component_register(
         driver
         log
         lvgl
-        esp_lcd_mipi_dsi
 )
