@@ -15,7 +15,6 @@ idf_component_register(
         esp_wifi
         esp_http_client
         esp_netif
-        mdns
         esp_timer
         freertos
         driver
