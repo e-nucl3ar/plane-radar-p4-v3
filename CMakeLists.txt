@@ -1,10 +1,25 @@
-cmake_minimum_required(VERSION 3.16)
-
-# ESP32-P4 Plane Radar — adapted from MatixYo/ESP32-Plane-Radar for the
-# Waveshare ESP32-P4-WIFI6-Touch-LCD-4C (4" 720×720 MIPI-DSI round display).
-#
-# WiFi is provided by the onboard ESP32-C6-MINI via SDIO; the main application
-# core is the ESP32-P4.
-
-include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(esp32-p4-plane-radar)
+idf_component_register(
+    SRCS
+        "main.c"
+        "display.c"
+        "radar_display.c"
+        "adsb_client.c"
+        "wifi_setup.c"
+        "radar_location.c"
+        "status_screens.c"
+    INCLUDE_DIRS
+        "."
+        "../components/radar_ui"
+    REQUIRES
+        nvs_flash
+        esp_wifi
+        esp_http_client
+        esp_netif
+        esp_timer
+        freertos
+        driver
+        log
+        lvgl
+        esp_ldo_regulator
+        esp_lcd_mipi_dsi
+)
