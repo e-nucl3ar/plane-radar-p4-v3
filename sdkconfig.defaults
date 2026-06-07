@@ -1,0 +1,67 @@
+# =============================================================================
+# sdkconfig.defaults — ESP32-P4 Plane Radar
+# Target: ESP32-P4 (esp32p4)
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Core / Flash
+# ---------------------------------------------------------------------------
+CONFIG_IDF_TARGET="esp32p4"
+CONFIG_ESPTOOLPY_FLASHSIZE_32MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# ---------------------------------------------------------------------------
+# PSRAM  (32 MB OPI on-package)
+# ---------------------------------------------------------------------------
+CONFIG_ESP_SPIRAM_SUPPORT=y
+CONFIG_SPIRAM_USE_MALLOC=y
+CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL=16384
+CONFIG_SPIRAM_MALLOC_RESERVE_INTERNAL=32768
+
+# ---------------------------------------------------------------------------
+# CPU / FreeRTOS
+# ---------------------------------------------------------------------------
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_360=y
+CONFIG_FREERTOS_HZ=1000
+CONFIG_FREERTOS_UNICORE=n
+
+# ---------------------------------------------------------------------------
+# Networking — WiFi bridged through ESP32-C6 via SDIO
+# ---------------------------------------------------------------------------
+CONFIG_ESP_WIFI_ENABLED=n
+# The C6 side handles WiFi; P4 communicates through SDIO/SPI hosted netif.
+# Enable SDIO slave driver on C6, use hosted transport on P4.
+CONFIG_ESP_HOSTED_ENABLED=y
+CONFIG_ESP_HOSTED_TRANSPORT_SDIO=y
+
+# ---------------------------------------------------------------------------
+# HTTP / mDNS
+# ---------------------------------------------------------------------------
+CONFIG_ESP_HTTP_CLIENT_ENABLE_HTTPS=y
+CONFIG_MDNS_ENABLED=y
+CONFIG_MDNS_HOSTNAME="plane-radar"
+CONFIG_MDNS_INSTANCE="Plane Radar"
+
+# ---------------------------------------------------------------------------
+# NVS
+# ---------------------------------------------------------------------------
+CONFIG_NVS_ASSERT_ERROR_CHECK=n
+
+# ---------------------------------------------------------------------------
+# MIPI-DSI display (720×720, 2-lane)
+# ---------------------------------------------------------------------------
+CONFIG_LCD_DSI_ISR_IRAM_SAFE=y
+
+# ---------------------------------------------------------------------------
+# LVGL  (via idf-component-manager)
+# ---------------------------------------------------------------------------
+CONFIG_LV_COLOR_DEPTH=16
+CONFIG_LV_MEM_SIZE_KILOBYTES=512
+CONFIG_LV_USE_GPU_ESP_DMA2D=y
+CONFIG_LV_TICK_CUSTOM=y
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
