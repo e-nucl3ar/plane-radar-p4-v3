@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.3.2
+          target: esp32p4
+          path: '.'
+          command: idf.py build
+
+      - name: Compute SHA-256
+        run: |
+          sha256sum build/esp32-p4-plane-radar.bin > build/plane-radar-${{ github.ref_name }}.sha256
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/esp32-p4-plane-radar.bin
+            build/bootloader/bootloader.bin
+            build/partition_table/partition-table.bin
+            build/plane-radar-${{ github.ref_name }}.sha256
+          generate_release_notes: true
