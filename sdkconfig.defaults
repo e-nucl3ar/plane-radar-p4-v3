@@ -39,12 +39,7 @@ CONFIG_ESP_HOSTED_TRANSPORT_SDIO=y
 # HTTP / mDNS
 # ---------------------------------------------------------------------------
 CONFIG_ESP_HTTP_CLIENT_ENABLE_HTTPS=y
-CONFIG_MDNS_ENABLED=y
-CONFIG_MDNS_HOSTNAME="plane-radar"
-CONFIG_MDNS_INSTANCE="Plane Radar"
-
-# ---------------------------------------------------------------------------
-# NVS
+## NVS
 # ---------------------------------------------------------------------------
 CONFIG_NVS_ASSERT_ERROR_CHECK=n
 
