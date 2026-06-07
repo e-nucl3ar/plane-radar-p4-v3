@@ -3,17 +3,8 @@
 dependencies:
   idf: ">=5.3.0"
 
-  ## Waveshare generic DSI panel driver.
-  ## Covers the 4inch DSI LCD (C) — 720×720 round panel on the 4C board.
-  ## Publishes esp_lcd_new_panel_dpi() with built-in vendor init sequence.
-  ## Add via: idf.py add-dependency "waveshare/esp_lcd_dsi"
   waveshare/esp_lcd_dsi: ">=1.0.0"
-
-  ## LVGL graphics library
   lvgl/lvgl: ">=9.2.0"
-
-  ## ESP-Hosted — transparent WiFi via ESP32-C6 SDIO on P4 boards
   espressif/esp_hosted: ">=0.0.6"
-
-  ## mDNS — moved out of IDF core in v5.x, now a managed component
   espressif/mdns: ">=1.3.0"
+  espressif/cjson: ">=1.7.18"
