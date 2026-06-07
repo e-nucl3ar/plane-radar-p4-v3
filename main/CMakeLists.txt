@@ -20,6 +20,6 @@ idf_component_register(
         driver
         log
         lvgl
-        esp_ldo_regulator
+        esp_ldo
         esp_lcd_mipi_dsi
 )
